@@ -1,0 +1,15 @@
+<div clas="container">
+  <h2><%= @restaurant.name %></h2>
+  <p><%= @restaurant.address %></p> <%# aqui sera as reviews do restaurant%>
+  <%= link_to "Back to list of restaurants", restaurants_path %>
+  <br>
+   <%= link_to "Add a new review", new_restaurant_review_path(@restaurant) %>
+  <br>
+  <p><strong>Reviews</strong></p>
+  <ul>
+    <%# pra ver cada review dentro da show %>
+    <%@restaurant.reviews.each do |review| %>
+      <li><%= review.content %> | score: <%= review.rating %> <%= link_to "Delete", review_path(review), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></li>
+    <%end%>
+  </ul>
+</div>
